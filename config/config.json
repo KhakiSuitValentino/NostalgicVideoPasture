@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "express_auth_boilerplate",
+    "database": "nostalgic_video_pasture",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
