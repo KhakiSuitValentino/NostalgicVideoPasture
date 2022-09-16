@@ -3,4 +3,8 @@ USER MODEL
 email: VARCHAR 255 (string)
 password: VARCHAR 255 (string)
 
-sequelize model:create --name user --attributes email:string,password:string
+sequelize model:create --name user --attributes email:string,username:string,password:string
+
+sequelize model:create --name video --attributes videodescription:string,uploaddate:date,userID:integer
+
+sequelize model:create --name comment --attributes usertext:string,timestamp:date,userid:integer,videoid:integer

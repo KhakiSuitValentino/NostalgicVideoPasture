@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "nostalgic_video_pasture",
+    "database": "videotape_pasture",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

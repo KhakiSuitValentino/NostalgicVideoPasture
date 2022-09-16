@@ -13,11 +13,12 @@ router.get('/new', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         // has the password from the req.body
-        const hashedPassword = bcrypt.hashSync(req.body.password, 12)        
+        const hashedPassword = bcrypt.hashSync(req.body.password, 12)       
         // create a new user
         const [newUser, created] = await db.user.findOrCreate({
             where: {
-                email: req.body.email
+                email: req.body.email,
+                username: req.body.username
             }, 
             defaults: {
                 password: hashedPassword
@@ -29,9 +30,10 @@ router.post('/', async (req, res) => {
         if (!created) {
             console.log('user exists already')
             res.redirect('/users/login?message=Please log into your account to continue.')
-        } else {
             // store that new user's id as a cookie in the browser
+        } else { 
             const encryptedUserId = crypto.AES.encrypt(newUser.id.toString(), process.env.ENC_SECRET)
+            console.log('%%%%%%%IN HERE%%%%%%%')
             const encryptedUserIdString = encryptedUserId.toString()
             res.cookie('userId', encryptedUserIdString)
             // redirect to the homepage
