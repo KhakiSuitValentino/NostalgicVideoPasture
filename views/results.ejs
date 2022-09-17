@@ -1,11 +1,12 @@
-<% movies.forEach(movie => { %>
+<% videos.forEach(video => { %>
      <div>
-       <h3><%= movie.Title %></h3>
-       <p><%= movie.Year %></p>
-       <p><%= movie.Type %></p>
-       <a href="/details/<%= movie.imdbID %>">more info</a>
+      <iframe width="560" height="315" src=https://www.youtube.com/embed/<%= video.id.videoId%>> </iframe>
+       <!-- <img  src=" (open squid) video.snippet.thumbnails.high.url (close flounder)" alt="(open squid) video.title %>"/>  -->
+
+       <h3><%= video.snippet.title %></h3>
+       <p>Date Posted:<%= video.snippet.publishTime %></p>
+       <p>Description: <%= video.snippet.description %></p>
+       <p>Youtube Video ID Tag: <%= video.id.videoId %></p>
+       <a href="/video/send/<%= video.id.videoId %>">Send to the Videotape Pasture?</a>
      </div>
-     <% if (movie.Poster != "N/A") { %>
-       <img  src="<%= movie.Poster %>" alt="<%= movie.Title %>'s movie poster"/> 
-     <% } %>
    <% }) %>

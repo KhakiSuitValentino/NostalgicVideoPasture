@@ -43,35 +43,36 @@ app.get('/', (req, res) => {
     // console.log('incoming cookie 🍪', req.cookies)
     // console.log(res.locals.myData)
     console.log('the currently logged in user is:', res.locals.user)
-    res.render('home.ejs')
+    res.render('index.ejs')
 })
 
-// app.get('users/new', (req,res) => {
-//     res.render('users/new.ejs')
+// //make a search and display results:
+
+// app.get('/search', (req, res) => {
+//     console.log(response.data);
+//     axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&q=${req.query.videoSearch}&type=video&part=snippet&maxResults=25`)
+//         .then(response => {
+//             res.render('results.ejs', { videos: response.data.items});
+//         })
 // })
 
-// app.get('users/login', (req,res) => {
-//     res.render('users/login.ejs')
-// })
+// //show details of videos:
+// app.get('/detail/:id', (req, res) => {
+//     console.log(req.params.id)
+//     axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&q=${req.query.videoSearch}&type=video&part=snippet&maxResults=25`)
+//       .then(response => {
+//         res.render('detail.ejs', { movie: response.data })
+//       })
+//       .catch(console.log)
+//   })
 
-app.get('/results', (req, res) => {
-    axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&q=${req.query.movieSearch}&type=video&part=snippet&maxResults=25`)
-        .then(response => {
-            res.render('results.ejs', { movies: response.data.Search});
-        })
-})
-
-app.get('/details/:id', (req, res) => {
-    console.log(req.params.id)
-    axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&q=${req.query.movieSearch}&type=video&part=snippet&maxResults=25`)
-      .then(response => {
-        res.render('detail.ejs', { movie: response.data })
-      })
-      .catch(console.log)
-  })
 
 // Controllers
-app.use('/users', require('./controllers/users'))
+app.use('/users', require('./controllers/usersController'));
+app.use('/search', require('./controllers/searchController'));
+app.use('/comment', require('./controllers/commentController'));
+app.use('/video', require('./controllers/videoController'));
+
 
 // listen on a port
-app.listen(PORT, () => console.log(`*****SERVER IS ONLINE: PORT ${PORT}*****`))
+app.listen(PORT, () => console.log(`*****SERVER IS ONLINE: PORT ${PORT}*****`));
