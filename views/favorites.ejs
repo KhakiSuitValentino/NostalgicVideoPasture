@@ -5,9 +5,10 @@
        <!-- <img  src=" (open squid) video.snippet.thumbnails.high.url (close flounder)" alt="(open squid) video.title %>"/>  -->
 
        <h3><%= video.snippet.title %></h3>
-       <p>Date Posted:<%= video.snippet.publishTime %></p>
+       <p>Date Posted: <%= video.snippet.publishTime %></p>
        <p>Description: <%= video.snippet.description %></p>
-       <p>Link To Youtube: <a href='www.youtube.com/watch?v=<%=video.id.videoId%>'</p>
+       <p>Link To Youtube: <a href="https://www.youtube.com/watch?v=<%=video.id.videoId%>" target="_blank">youtube.com/watch?v=<%=video.id.videoId%></a></p>
+     </p>
      </div>
 
      <!-- <form method="POST" action="/video/(open squid) video.id.videoId %>">
