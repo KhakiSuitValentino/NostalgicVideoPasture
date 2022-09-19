@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
 // Controllers
 app.use('/users', require('./controllers/usersController'));
 app.use('/search', require('./controllers/searchController'));
-app.use('/comment', require('./controllers/commentController'));
+app.use('/commentController', require('./controllers/commentController'));
 app.use('/video', require('./controllers/videoController'));
 
 

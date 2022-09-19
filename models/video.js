@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   video.init({
-    videodescription: DataTypes.STRING,
+    videoId: DataTypes.STRING,
+    title: DataTypes.STRING,
+    description: DataTypes.STRING,
     uploaddate: DataTypes.DATE,
     userID: DataTypes.INTEGER
   }, {
