@@ -6,10 +6,12 @@
        <h3><%= video.snippet.title %></h3>
        <p>Date Posted:<%= video.snippet.publishTime %></p>
        <p>Description: <%= video.snippet.description %></p>
-       <p>Link To Youtube: <a href='www.youtube.com/watch?v=<%=video.id.videoId%>'</p>
+       <a href='http://www.youtube.com/watch?v=<%=video.id.videoId%>'>Link To Youtube </a>
+     </br>
      </div>
-
+    </br>
      <form method="POST" action="/video/<%= video.id.videoId %>">
         <button type="submit">Send To The Videotape Pasture</button>
      </form>
+    </br>
    <% }) %>

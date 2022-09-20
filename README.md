@@ -54,7 +54,7 @@ Make a Post:
 <em>As a user, I want to...</em>
 </br>-create an account with a unique username that I can log into whenever I use the website.
 </br>-view what previous users have posted to the website, and view which usernames posted which videos.
-</br>-search the Internet Archive database to find content to share.
+</br>-search the Youtube database to find content to share.
 </br>-select an individual video to post to the website, as well as type a description to accompany the video.
 </br>-comment on posts from other users, and view which users made which other comments.
 </br>-delete my own comments or posts if necessary.

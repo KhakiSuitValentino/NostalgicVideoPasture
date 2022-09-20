@@ -1,16 +1,25 @@
 <% videos.forEach(video => { %>
-     <h1>Favorites:</h1>
+     <h1>The Videotape Pasture:</h1>
      <div>
-      <iframe width="560" height="315" src=https://www.youtube.com/embed/<%= video.id.videoId%>> </iframe>
+      <iframe width="560" height="315" src=https://www.youtube.com/embed/<%= video.vidqeoId%>> </iframe>
        <!-- <img  src=" (open squid) video.snippet.thumbnails.high.url (close flounder)" alt="(open squid) video.title %>"/>  -->
 
-       <h3><%= video.snippet.title %></h3>
-       <p>Date Posted:<%= video.snippet.publishTime %></p>
-       <p>Description: <%= video.snippet.description %></p>
-       <p>Link To Youtube: <a href='www.youtube.com/watch?v=<%=video.id.videoId%>'</p>
+       <h3><%= video.title %></h3>
+       <p>Date Posted:<%= video.publishedAt %></p>
+       <p>Description: <%= video.description %></p>
+       <a href='http://www.youtube.com/watch?v=<%=video.videoId%>'>Link To Youtube </a>
+     </br>
+
+     <form method="POST" action="/video/<%= video.videoId %>/?_method=DELETE">
+          <input type="submit" value="Remove From The Pasture">
+      </form>
+
      </div>
+</br>
 
      <!-- <form method="POST" action="/video/(open squid) video.id.videoId %>">
         <button type="submit">Send To The Videotape Pasture</button>
      </form> -->
+
    <% }) %>
+
