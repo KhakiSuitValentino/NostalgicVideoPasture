@@ -4,6 +4,8 @@ const db = require('../models')
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
 const axios = require('axios')
+const methodOverride = require('method-override');
+router.use(methodOverride('_method'));
 const { stringify } = require('nodemon/lib/utils')
 const { restart } = require('nodemon')
 
@@ -20,13 +22,11 @@ router.get('/', (req, res) => {
 
  //1 - send data to model 2- route back to home page
 router.post('/:id', (req, res) => {
+    console.log('*******POST*******')
      axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${req.params.id}&key=${process.env.YOUTUBE_API_KEY}`)
          .then(async response => {
             const videoData = response.data.items;
-            console.log('**********CONSOLE LOG START**********')
             console.log(db.user.findAll({}));
-
-            console.log('**********CONSOLE LOG END**********')
             const favoriteData = await db.video.findOrCreate({
                 where: {
                 videoId: videoData[0].id,
@@ -41,8 +41,13 @@ router.post('/:id', (req, res) => {
  })
 
 router.get('/favorites', (req, res) => {
-    db.video.findAll({})
+    db.video.findAll({
+        order: [
+            ['id', 'ASC']
+        ]
+    })
     .then(videoFavorites => {
+        // res.send(videoFavorites);
         res.render('favorites.ejs', {videos: videoFavorites});
     })
 })
@@ -50,11 +55,26 @@ router.get('/favorites', (req, res) => {
 //delete action
 router.delete('/:id', (req,res) => {
     console.log('in here delete')
-    db.video.delete({
+    db.video.destroy({
         where: {
         videoId: req.params.id,
         }
     })
+    res.redirect('/video/favorites')
 })
+
+router.put('/:id', (req,res) => {
+    console.log('&&&&&&&&&in here delete&&&&&&&&&')
+    console.log(req.body)
+    db.video.update({
+        description: req.body.updateDescription},
+        {
+        where: {
+        videoId: req.params.id,
+        }
+    })
+    res.redirect('/video/favorites')
+})
+
 
 module.exports = router;

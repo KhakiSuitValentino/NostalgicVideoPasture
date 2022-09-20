@@ -1,18 +1,26 @@
+<h1>The Videotape Pasture:</h1>
 <% videos.forEach(video => { %>
-     <h1>The Videotape Pasture:</h1>
      <div>
       <iframe width="560" height="315" src=https://www.youtube.com/embed/<%= video.vidqeoId%>> </iframe>
        <!-- <img  src=" (open squid) video.snippet.thumbnails.high.url (close flounder)" alt="(open squid) video.title %>"/>  -->
 
        <h3><%= video.title %></h3>
-       <p>Date Posted:<%= video.publishedAt %></p>
+       <p>Date Posted:<%= video.uploaddate %></p>
        <p>Description: <%= video.description %></p>
        <a href='http://www.youtube.com/watch?v=<%=video.videoId%>'>Link To Youtube </a>
      </br>
 
+     <form method="POST" action="/video/<%= video.videoId %>/?_method=PUT">
+          <input name="updateDescription" type="text" placeholder="Type text here..." value="">
+     </br>
+          <input type="submit" value="Update Description">
+      </form>
+     </br>
      <form method="POST" action="/video/<%= video.videoId %>/?_method=DELETE">
           <input type="submit" value="Remove From The Pasture">
       </form>
+
+
 
      </div>
 </br>
