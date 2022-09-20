@@ -9,18 +9,18 @@
        <p>Description: <%= video.description %></p>
        <a href='http://www.youtube.com/watch?v=<%=video.videoId%>'>Link To Youtube </a>
      </br>
+     </br>
 
      <form method="POST" action="/video/<%= video.videoId %>/?_method=PUT">
           <input name="updateDescription" type="text" placeholder="Type text here..." value="">
      </br>
-          <input type="submit" value="Update Description">
+     </br>
+          <button class="btn btn-outline-primary">Update Description</button>
       </form>
      </br>
      <form method="POST" action="/video/<%= video.videoId %>/?_method=DELETE">
           <input type="submit" value="Remove From The Pasture">
       </form>
-
-
 
      </div>
 </br>
