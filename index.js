@@ -7,6 +7,7 @@ const axios = require('axios')
 const db = require('./models')
 const crypto = require('crypto-js')
 
+
 console.log('server secret:', process.env.ENC_SECRET)
 
 // config express app/middlewares
@@ -15,6 +16,8 @@ const PORT = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(express.urlencoded({ extended: false }))
+// app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static('public'));
 app.use(cookieParser())
 // our custom auth middleware
 app.use(async (req, res, next) => {
@@ -25,7 +28,7 @@ app.use(async (req, res, next) => {
         const decryptedId = crypto.AES.decrypt(req.cookies.userId.toString(), process.env.ENC_SECRET)
         const decryptedIdString = decryptedId.toString(crypto.enc.Utf8)
         // look up the user in the db
-        const user = await db.user.findByPk(decryptedIdString)
+        const user = await db.user.findByPk(decryptedIdString);
         // mount the user on the res.locals
         res.locals.user = user
     // if there is no cookie -- set the user to be null in the res.locals
@@ -70,7 +73,7 @@ app.get('/', (req, res) => {
 // Controllers
 app.use('/users', require('./controllers/usersController'));
 app.use('/search', require('./controllers/searchController'));
-app.use('/commentController', require('./controllers/commentController'));
+app.use('/comment', require('./controllers/commentController'));
 app.use('/video', require('./controllers/videoController'));
 
 

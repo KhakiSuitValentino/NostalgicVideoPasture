@@ -1,23 +1,18 @@
 <h1><em>NOSTALGIC VIDEO PASTURE</em></h1>
 
 <h2>Description:</h2>
-The Nostalgic Video Pasture is a website that hosts a collection of user-submitted "nostalgic videos" sourced from The Internet Archive. Users will have the opportunity to find, observe, and share movies, television, and other video from bygone eras.
+The Nostalgic Video Pasture is a website that hosts a collection of user-submitted "nostalgic videos" sourced from Youtube. Users will have the opportunity to find, observe, and share movies, television, and other video from bygone eras.
 
 <h2>Choice of API:</h2>
-This app will use the archive.org metadata API to source its videos.
+This app will use the Youtube API to source its videos.
 
 <h2>Tech Stack:</h2>
-HTML, CSS, JS, EJS, PostgresQL, AJAX
+HTML, CSS, JS, EJS, PostgresQL, Express
 
 <h2>Proof Of Concept:</h2>
-This project will make use of two APIs from archive.org. The first API makes a request to the Internet Archive to search for videos. The return result displays a list of videos in HTML format. Each return result contains an identifier string in the href link to the video.
+Youtube's API makes hosting videos and sourcing data about videos a very simple task. Here is a screenshot of JSON data from a GET request:
 </br>
-<img src="/diagrams/Search1.png" alt="API 1 HTML Results" title="API 1 HTML Results">
-
-</br>
-We can use the identifier from the href link to make the second API request. This will return JSON data, which can be used to show information unique to the video.
-
-<img src="/diagrams/Search2.png" alt="API 2 JSON Results" title="API 2 JSON Results">
+<img src="/diagrams/Search1.png" alt="API Results" title="API Results">
 
 
 <h2>Wireframe:</h2>
@@ -34,7 +29,7 @@ Log In:
 Home Page (User Logged In):
 <img src="/diagrams/homepage_userloggedin_wireframe.png" alt="Wireframe: Homepage with User Logged In" title="Wireframe: Homepage with user logged in">
 
-Search archive.org:
+Search Youtube:
 <img src="/diagrams/search_page_wireframe.png" alt="Wireframe: Search archive.org database" title="Wireframe: Search archive.org database">
 
 Display Search Results:
@@ -53,20 +48,21 @@ Make a Post:
 <h2>User Stories</h2>
 <em>As a user, I want to...</em>
 </br>-create an account with a unique username that I can log into whenever I use the website.
-</br>-view what previous users have posted to the website, and view which usernames posted which videos.
-</br>-search the Internet Archive database to find content to share.
+</br>-view what I and previous users have posted to the website.
+</br>-search the Youtube database to find content to share.
 </br>-select an individual video to post to the website, as well as type a description to accompany the video.
-</br>-comment on posts from other users, and view which users made which other comments.
-</br>-delete my own comments or posts if necessary.
 
 <h2>MVP Goals:</h2>
 </br>-Create a system for users to make accounts
-</br>-Render search results of videos from The Internet Archive
+</br>-Render search results of videos from Youtube
 </br>-Give users the ability to select a video from a search result to post to the main page
-</br>-Give users the ability to comment on posts made to the main page
-</br>-Give users the ability to delete posts and comments they have made
+</br>-Give users the ability to type their own description of the video
+</br>-Give users the ability to delete posts and edit descriptions they made
 
 <h2>Stretch Goals:</h2>
+</br>-Publicly post username of uploader who sends a video to the Pasture
+</br>-Create a personal favorites system so that individual users may seperate their favorites from their community posts
+</br>-Create a comment system for community posted videos, so other users may share thoughts on posts
 </br>-Create a moderator system: certain users are granted ability to delete any post or comment
 </br>-Create a like/dislike or other rating system as a way for users to interact with posts
-</br>-Create a post organization system across the website, to sort video posts by decade
+</br>-Create a category system to organise videos throughout the website
