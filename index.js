@@ -7,6 +7,7 @@ const axios = require('axios')
 const db = require('./models')
 const crypto = require('crypto-js')
 
+
 console.log('server secret:', process.env.ENC_SECRET)
 
 // config express app/middlewares
@@ -15,6 +16,8 @@ const PORT = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(express.urlencoded({ extended: false }))
+// app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static('public'));
 app.use(cookieParser())
 // our custom auth middleware
 app.use(async (req, res, next) => {
