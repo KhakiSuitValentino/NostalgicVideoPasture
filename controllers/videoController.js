@@ -6,8 +6,6 @@ const bcrypt = require('bcrypt')
 const axios = require('axios')
 const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
-const { stringify } = require('nodemon/lib/utils')
-const { restart } = require('nodemon')
 
 router.get('/', (req, res) => {
      axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&q=${req.query.videoSearch}&type=video&part=snippet&maxResults=25`)
