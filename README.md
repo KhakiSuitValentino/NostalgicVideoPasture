@@ -1,5 +1,16 @@
 <h1><em>NOSTALGIC VIDEO PASTURE</em></h1>
 
+<h2>Deployment Link:</h2>
+https://www.videotape-pasture.fly.dev
+
+<h2>Installation Instructions:</h2>
+1) Fork and clone this repository.
+
+2) Run <pre><code>npm i express express-ejs-layouts cookie-parser axios crypto-js sequelize pg</code></pre>
+
+3) Ready to go!
+
+
 <h2>Description:</h2>
 The Nostalgic Video Pasture is a website that hosts a collection of user-submitted "nostalgic videos" sourced from Youtube. Users will have the opportunity to find, observe, and share movies, television, and other video from bygone eras.
 
